@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self';"
+    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva obligación | Grupo Empresarial JD</title>
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+    <div class="app-shell">
+        
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-mark">JD</div>
+        <div class="brand-text">
+            <div class="brand-title">Grupo Empresarial JD</div>
+            <div class="brand-subtitle">Obligaciones</div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-label">Principal</div>
+        <button class="nav-item" data-nav="dashboard">
+            <span class="nav-icon">▦</span>
+            <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-nav="empresas">
+            <span class="nav-icon">▤</span>
+            <span>Empresas</span>
+        </button>
+        <button class="nav-item" data-nav="obligaciones">
+            <span class="nav-icon">✓</span>
+            <span>Obligaciones</span>
+        </button>
+
+        <div class="nav-label">Acciones</div>
+        <button class="nav-item" data-nav="nueva-obligacion">
+            <span class="nav-icon">＋</span>
+            <span>Nueva obligación</span>
+        </button>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button class="nav-item" id="btnLogout">
+            <span class="nav-icon">↪</span>
+            <span>Cerrar sesión</span>
+        </button>
+    </div>
+</aside>
+
+        
+<header class="topbar">
+    <div class="topbar-title">Sistema de Gestión y Seguimiento</div>
+
+    <div class="user-box">
+        <div class="user-avatar" id="userAvatar">JD</div>
+        <div>
+            <div class="user-name" id="userName">Usuario</div>
+            <div class="user-role">Grupo Empresarial JD</div>
+        </div>
+    </div>
+</header>
+
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title" id="tituloPagina">Nueva obligación</h1>
+                    <p class="page-subtitle">
+                        Registre la información necesaria para controlar el vencimiento.
+                    </p>
+                </div>
+
+                <button class="btn btn-secondary" id="btnVolver">
+                    ← Volver
+                </button>
+            </div>
+
+            <div id="mensaje" class="alert"></div>
+
+            <form id="obligacionForm">
+                <section class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Información general</h2>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="empresa">
+                                    Empresa *
+                                </label>
+                                <select class="select" id="empresa" required>
+                                    <option value="">Seleccione...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="tipo">
+                                    Tipo de obligación *
+                                </label>
+                                <select class="select" id="tipo" required>
+                                    <option value="">Seleccione...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="codigo">
+                                    Código *
+                                </label>
+                                <input class="input" id="codigo" maxlength="40" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="titulo">
+                                    Título *
+                                </label>
+                                <input class="input" id="titulo" maxlength="200" required>
+                            </div>
+
+                            <div class="form-group full">
+                                <label class="form-label" for="descripcion">
+                                    Descripción
+                                </label>
+                                <textarea
+                                    class="textarea"
+                                    id="descripcion"
+                                    maxlength="1000"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Vencimiento y seguimiento</h2>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="fechaInicio">
+                                    Fecha de inicio
+                                </label>
+                                <input class="input" type="date" id="fechaInicio">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="fechaVencimiento">
+                                    Fecha de vencimiento *
+                                </label>
+                                <input
+                                    class="input"
+                                    type="date"
+                                    id="fechaVencimiento"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="diasAlerta">
+                                    Días de anticipación *
+                                </label>
+                                <input
+                                    class="input"
+                                    type="number"
+                                    id="diasAlerta"
+                                    min="0"
+                                    value="5"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="prioridad">
+                                    Prioridad *
+                                </label>
+                                <select class="select" id="prioridad" required>
+                                    <option value="BAJA">Baja</option>
+                                    <option value="MEDIA" selected>Media</option>
+                                    <option value="ALTA">Alta</option>
+                                    <option value="CRITICA">Crítica</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="responsable">
+                                    Responsable
+                                </label>
+                                <select class="select" id="responsable">
+                                    <option value="">Sin asignar</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="monto">
+                                    Monto de referencia (L)
+                                </label>
+                                <input
+                                    class="input"
+                                    type="number"
+                                    id="monto"
+                                    min="0"
+                                    step="0.01"
+                                >
+                            </div>
+
+                            <div class="form-group full">
+                                <div class="check-row">
+                                    <input type="checkbox" id="renovacion">
+                                    <label for="renovacion">
+                                        Esta obligación requiere renovación.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button
+                                class="btn btn-secondary"
+                                type="button"
+                                id="btnCancelar"
+                            >
+                                Cancelar
+                            </button>
+
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                                id="btnGuardar"
+                            >
+                                Guardar obligación
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/nueva-obligacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="
+            default-src 'self';
+            script-src 'self';
+            style-src 'self' 'unsafe-inline';
+        "
+    >
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Grupo Empresarial JD
+    </title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f5f5f5;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #estadoConexion {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>
+            Sistema de Obligaciones Empresariales
+        </h1>
+
+        <p>
+            Grupo Empresarial JD
+        </p>
+
+        <button id="btnProbarConexion">
+            Probar conexión
+        </button>
+
+        <button id="btnEmpresas">
+            Consultar empresas
+        </button>
+
+        <div id="estadoConexion"></div>
+
+        <h2>
+            Empresas
+        </h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Empresa</th>
+                    <th>Nombre comercial</th>
+                    <th>Rubro</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaEmpresas"></tbody>
+        </table>
+
+    </div>
+
+    <script src="./js/index.js"></script>
+
+</body>
+</html>

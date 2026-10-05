@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self';"
+    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Grupo Empresarial JD</title>
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+    <div class="app-shell">
+        
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-mark">JD</div>
+        <div class="brand-text">
+            <div class="brand-title">Grupo Empresarial JD</div>
+            <div class="brand-subtitle">Obligaciones</div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-label">Principal</div>
+        <button class="nav-item" data-nav="dashboard">
+            <span class="nav-icon">▦</span>
+            <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-nav="empresas">
+            <span class="nav-icon">▤</span>
+            <span>Empresas</span>
+        </button>
+        <button class="nav-item" data-nav="obligaciones">
+            <span class="nav-icon">✓</span>
+            <span>Obligaciones</span>
+        </button>
+
+        <div class="nav-label">Acciones</div>
+        <button class="nav-item" data-nav="nueva-obligacion">
+            <span class="nav-icon">＋</span>
+            <span>Nueva obligación</span>
+        </button>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button class="nav-item" id="btnLogout">
+            <span class="nav-icon">↪</span>
+            <span>Cerrar sesión</span>
+        </button>
+    </div>
+</aside>
+
+        
+<header class="topbar">
+    <div class="topbar-title">Sistema de Gestión y Seguimiento</div>
+
+    <div class="user-box">
+        <div class="user-avatar" id="userAvatar">JD</div>
+        <div>
+            <div class="user-name" id="userName">Usuario</div>
+            <div class="user-role">Grupo Empresarial JD</div>
+        </div>
+    </div>
+</header>
+
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">
+                        Resumen general de obligaciones y vencimientos.
+                    </p>
+                </div>
+                <button class="btn btn-primary" id="btnNuevaObligacion">
+                    + Nueva obligación
+                </button>
+            </div>
+
+            <div id="mensaje" class="alert"></div>
+
+            <section class="stats-grid">
+                <div class="stat-card cyan">
+                    <div class="stat-icon">▤</div>
+                    <div class="stat-value" id="statEmpresas">0</div>
+                    <div class="stat-label">Empresas activas</div>
+                </div>
+
+                <div class="stat-card blue">
+                    <div class="stat-icon">✓</div>
+                    <div class="stat-value" id="statActivas">0</div>
+                    <div class="stat-label">Obligaciones abiertas</div>
+                </div>
+
+                <div class="stat-card orange">
+                    <div class="stat-icon">◷</div>
+                    <div class="stat-value" id="statProximas">0</div>
+                    <div class="stat-label">Próximas a vencer</div>
+                </div>
+
+                <div class="stat-card red">
+                    <div class="stat-icon">!</div>
+                    <div class="stat-value" id="statVencidas">0</div>
+                    <div class="stat-label">Vencidas</div>
+                </div>
+
+                <div class="stat-card green">
+                    <div class="stat-icon">✓</div>
+                    <div class="stat-value" id="statAtendidas">0</div>
+                    <div class="stat-label">Atendidas / cerradas</div>
+                </div>
+            </section>
+
+            <section class="grid-2">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Próximos vencimientos</h2>
+                        <button class="btn btn-secondary btn-sm" id="btnVerObligaciones">
+                            Ver todas
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Obligación</th>
+                                    <th>Tipo</th>
+                                    <th>Vence</th>
+                                    <th>Días</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaProximas"></tbody>
+                        </table>
+                        <div id="sinProximas" class="empty" hidden>
+                            No hay vencimientos próximos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Accesos rápidos</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="quick-actions">
+                            <button class="quick-card cyan" id="quickEmpresas">
+                                <span>▤</span>
+                                <strong>Empresas</strong>
+                                <span>Administrar compañías</span>
+                            </button>
+                            <button class="quick-card purple" id="quickObligaciones">
+                                <span>✓</span>
+                                <strong>Obligaciones</strong>
+                                <span>Consultar compromisos</span>
+                            </button>
+                            <button class="quick-card green" id="quickNueva">
+                                <span>＋</span>
+                                <strong>Registrar</strong>
+                                <span>Nueva obligación</span>
+                            </button>
+                            <button class="quick-card orange" id="quickVencidas">
+                                <span>!</span>
+                                <strong>Vencidas</strong>
+                                <span>Revisar pendientes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Obligaciones registradas recientemente</h2>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Empresa</th>
+                                <th>Título</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                                <th>Registro</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaRecientes"></tbody>
+                    </table>
+                    <div id="sinRecientes" class="empty" hidden>
+                        Todavía no hay obligaciones registradas.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>

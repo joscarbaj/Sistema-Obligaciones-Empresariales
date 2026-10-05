@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self';"
+    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obligaciones | Grupo Empresarial JD</title>
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+    <div class="app-shell">
+        
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-mark">JD</div>
+        <div class="brand-text">
+            <div class="brand-title">Grupo Empresarial JD</div>
+            <div class="brand-subtitle">Obligaciones</div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-label">Principal</div>
+        <button class="nav-item" data-nav="dashboard">
+            <span class="nav-icon">▦</span>
+            <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-nav="empresas">
+            <span class="nav-icon">▤</span>
+            <span>Empresas</span>
+        </button>
+        <button class="nav-item" data-nav="obligaciones">
+            <span class="nav-icon">✓</span>
+            <span>Obligaciones</span>
+        </button>
+
+        <div class="nav-label">Acciones</div>
+        <button class="nav-item" data-nav="nueva-obligacion">
+            <span class="nav-icon">＋</span>
+            <span>Nueva obligación</span>
+        </button>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button class="nav-item" id="btnLogout">
+            <span class="nav-icon">↪</span>
+            <span>Cerrar sesión</span>
+        </button>
+    </div>
+</aside>
+
+        
+<header class="topbar">
+    <div class="topbar-title">Sistema de Gestión y Seguimiento</div>
+
+    <div class="user-box">
+        <div class="user-avatar" id="userAvatar">JD</div>
+        <div>
+            <div class="user-name" id="userName">Usuario</div>
+            <div class="user-role">Grupo Empresarial JD</div>
+        </div>
+    </div>
+</header>
+
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Obligaciones</h1>
+                    <p class="page-subtitle">
+                        Consulta y seguimiento de contratos, permisos, renovaciones y compromisos.
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" id="btnNueva">
+                    + Nueva obligación
+                </button>
+            </div>
+
+            <div id="mensaje" class="alert"></div>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Listado de obligaciones</h2>
+
+                    <div class="filters">
+                        <input
+                            class="input"
+                            id="busqueda"
+                            placeholder="Buscar código, título o empresa..."
+                        >
+
+                        <select class="select" id="empresaFiltro">
+                            <option value="">Todas las empresas</option>
+                        </select>
+
+                        <select class="select" id="estadoFiltro">
+                            <option value="TODOS">Todos los estados</option>
+                            <option value="PENDIENTE">Pendiente</option>
+                            <option value="PROXIMA">Próxima</option>
+                            <option value="VENCIDA">Vencida</option>
+                            <option value="ATENDIDA">Atendida</option>
+                            <option value="CERRADA">Cerrada</option>
+                            <option value="CANCELADA">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Empresa</th>
+                                <th>Obligación</th>
+                                <th>Vencimiento</th>
+                                <th>Días</th>
+                                <th>Prioridad</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaObligaciones"></tbody>
+                    </table>
+
+                    <div id="sinObligaciones" class="empty" hidden>
+                        No hay obligaciones para mostrar.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/obligaciones.js"></script>
+</body>
+</html>

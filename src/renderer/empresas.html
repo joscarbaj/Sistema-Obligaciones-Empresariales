@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self';"
+    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas | Grupo Empresarial JD</title>
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+    <div class="app-shell">
+        
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-mark">JD</div>
+        <div class="brand-text">
+            <div class="brand-title">Grupo Empresarial JD</div>
+            <div class="brand-subtitle">Obligaciones</div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-label">Principal</div>
+        <button class="nav-item" data-nav="dashboard">
+            <span class="nav-icon">▦</span>
+            <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-nav="empresas">
+            <span class="nav-icon">▤</span>
+            <span>Empresas</span>
+        </button>
+        <button class="nav-item" data-nav="obligaciones">
+            <span class="nav-icon">✓</span>
+            <span>Obligaciones</span>
+        </button>
+
+        <div class="nav-label">Acciones</div>
+        <button class="nav-item" data-nav="nueva-obligacion">
+            <span class="nav-icon">＋</span>
+            <span>Nueva obligación</span>
+        </button>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button class="nav-item" id="btnLogout">
+            <span class="nav-icon">↪</span>
+            <span>Cerrar sesión</span>
+        </button>
+    </div>
+</aside>
+
+        
+<header class="topbar">
+    <div class="topbar-title">Sistema de Gestión y Seguimiento</div>
+
+    <div class="user-box">
+        <div class="user-avatar" id="userAvatar">JD</div>
+        <div>
+            <div class="user-name" id="userName">Usuario</div>
+            <div class="user-role">Grupo Empresarial JD</div>
+        </div>
+    </div>
+</header>
+
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Empresas</h1>
+                    <p class="page-subtitle">
+                        Administración de las empresas que forman parte del grupo.
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" id="btnNuevaEmpresa">
+                    + Registrar empresa
+                </button>
+            </div>
+
+            <div id="mensaje" class="alert"></div>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Listado de empresas</h2>
+
+                    <div class="filters">
+                        <input
+                            class="input"
+                            id="buscarEmpresa"
+                            placeholder="Buscar empresa, código o rubro..."
+                        >
+
+                        <select class="select" id="filtroEstado">
+                            <option value="TODAS">Todas</option>
+                            <option value="ACTIVAS">Activas</option>
+                            <option value="INACTIVAS">Inactivas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Empresa</th>
+                                <th>Rubro</th>
+                                <th>RTN</th>
+                                <th>Contacto</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaEmpresas"></tbody>
+                    </table>
+
+                    <div id="sinEmpresas" class="empty" hidden>
+                        No hay empresas para mostrar.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-backdrop" id="modalEmpresa">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="panel-title" id="modalTitulo">Registrar empresa</h2>
+                <button class="icon-button" id="btnCerrarModal" type="button">×</button>
+            </div>
+
+            <form id="empresaForm">
+                <div class="modal-body">
+                    <div id="modalMensaje" class="alert"></div>
+
+                    <input type="hidden" id="idEmpresa">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="codigo">Código *</label>
+                            <input class="input" id="codigo" maxlength="20" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre *</label>
+                            <input class="input" id="nombre" maxlength="180" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="nombreComercial">
+                                Nombre comercial
+                            </label>
+                            <input class="input" id="nombreComercial" maxlength="180">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="rtn">RTN</label>
+                            <input class="input" id="rtn" maxlength="30">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="rubro">Rubro</label>
+                            <input class="input" id="rubro" maxlength="200">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="telefono">Teléfono</label>
+                            <input class="input" id="telefono" maxlength="50">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="correo">Correo</label>
+                            <input class="input" id="correo" type="email" maxlength="150">
+                        </div>
+
+                        <div class="form-group full">
+                            <label class="form-label" for="direccion">Dirección</label>
+                            <textarea class="textarea" id="direccion" maxlength="300"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="btnCancelar" type="button">
+                        Cancelar
+                    </button>
+                    <button class="btn btn-primary" id="btnGuardarEmpresa" type="submit">
+                        Guardar empresa
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/empresas.js"></script>
+</body>
+</html>
